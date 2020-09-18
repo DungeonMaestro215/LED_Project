@@ -1,0 +1,16 @@
+{
+  "name": "led_programs",
+  "version": "1.0.0",
+  "description": "Control my living room LED strip",
+  "main": "index.js",
+  "dependencies": {
+    "bulma": "^0.9.0",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
