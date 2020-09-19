@@ -3,7 +3,7 @@ let LEDController = class {
         this.model = model;
         this.view = view;
 
-        let xhttp = XMLHttpRequest();
+        let xhttp = new XMLHttpRequest();
         // When something happens in the view, make something happen
         view.addListener((e) => {
             // TODO
