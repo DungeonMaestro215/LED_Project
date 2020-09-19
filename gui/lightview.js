@@ -7,6 +7,8 @@ let LEDView = class {
         let led_strip = document.createElement("div");
         led_strip.setAttribute("class", "strip");
 
+        let colorpicker = document.getElementById('picker').value;
+
         let pixel_click_handler = (e) => {
             // TODO
 
@@ -15,9 +17,9 @@ let LEDView = class {
                 action: "click",
                 id: pix.data_model.id,
                 color: {
-                    r: 150,
-                    g: 0,
-                    b: 0
+                    r: parseInt(colorpicker.substr(1,2), 16),
+                    g: parseInt(colorpicker.substr(3,2), 16),
+                    b: parseInt(colorpicker.substr(5,2), 16)
                 }
             });
         }

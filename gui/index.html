@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>LED Controls</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
-        <link rel="stylesheet" href="style.css">
-    </head>
+    <title>LED Controls</title>
 
-    <body>
-        <div class="container">
-            <div class="content has-text-centered">
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="columns">
+        <div class="column">
+            <input id="picker" type="color" value="#960000">
+        </div>
+        <div class="column container">
+            <div class="content has-text-right">
                 <h1 class="title">LED Controls</h1>
                 <h5 class="subtitle">Click a button to change the lights</h5>
             </div>
@@ -21,11 +26,13 @@
 
             </div>
         </div>
+    </div>
 
-        <script src="node_modules/jquery/dist/jquery.js"></script>
-        <script src="main.js"></script>
-        <script src="lightcontroller.js"></script>
-        <script src="lightmodel.js"></script>
-        <script src="lightview.js"></script>
-    </body>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="main.js"></script>
+    <script src="lightcontroller.js"></script>
+    <script src="lightmodel.js"></script>
+    <script src="lightview.js"></script>
+</body>
+
 </html>
