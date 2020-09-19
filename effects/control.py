@@ -1,24 +1,26 @@
-# Simple test for NeoPixels on Raspberry Pi
-import time
-import board
-import neopixel
- 
- 
-# Choose an open pin connected to the Data In of the NeoPixel strip, i.e. board.D18
-# NeoPixels must be connected to D10, D12, D18 or D21 to work.
-pixel_pin = board.D12
- 
-# The number of NeoPixels
-num_pixels = 300
- 
-# The order of the pixel colors - RGB or GRB. Some NeoPixels have red and green reversed!
-# For RGBW NeoPixels, simply change the ORDER to RGBW or GRBW.
-ORDER = neopixel.GRB
- 
-pixels = neopixel.NeoPixel(
-    pixel_pin, num_pixels, brightness=0.5, auto_write=False, pixel_order=ORDER
-)
-
-pixels[75] = (150, 0, 0)
-pixels[259] = (0, 0, 150)
-pixels.show()
+def control(num_pixels, pixels):
+    import sys
+    
+    idx = -1
+    r = 0
+    g = 0
+    b = 0
+    try:
+        idx_ = int(sys.argv[2])
+        r_ = int(sys.argv[3])
+        g_ = int(sys.argv[4])
+        b_ = int(sys.argv[5])
+        if (idx_ <= num_pixels and idx_ >= 0):
+            idx = idx_
+        if (r_ <= 255 and r_ >= 0):
+            r = r_
+        if (g_ <= 255 and g_ >= 0):
+            g = g_
+        if (b_ <= 255 and b_ >= 0):
+            b = b_
+    except IndexError:
+        print("")
+    
+    if (idx != -1):
+        pixels[idx] = (r, g, b)
+        pixels.show()
