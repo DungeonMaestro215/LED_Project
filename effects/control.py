@@ -1,5 +1,7 @@
 def control(num_pixels, pixels):
     import sys
+    from pixStorage import readPix
+    from pixStorage import writePix
     
     idx = -1
     r = 0
@@ -22,5 +24,11 @@ def control(num_pixels, pixels):
         print("")
     
     if (idx != -1):
-        pixels[idx] = (r, g, b)
+        writePix(r, g, b, idx)
+        readPix(pixels)
+
         pixels.show()
+
+# write to PixStorage.txt at line idx with with comma seperated rgb 
+    #EX: 255,255,255,    Comma at end also
+# read file 
