@@ -35,8 +35,6 @@ try:
 except IndexError:
     print("")
 
-# Initialize Pixels
-num_pixels, pixels = header(300)
 
 if (effect == "montecarlo"):
     montecarlo(num_pixels, pixels)
