@@ -3,13 +3,13 @@ def writePix(r, g, b, idx):
 	#overwrite file at line idx with rgb values in CSV format
 	#Ex: 255,255,255,
 
-	fileR = open("PixStorage.txt", "r")
+	fileR = open("/home/denny0/LED_Project/effects/PixStorage.txt", "r")
 	linesR = fileR.readlines()
 	fileR.close()
 
 	linesR[idx] = str(r) + "," + str(g) + "," + str(b) + ",\n"
 
-	fileW = open("PixStorage.txt", "w")
+	fileW = open("/home/denny0/LED_Project/effects/PixStorage.txt", "w")
 	fileW.writelines(linesR)
 	fileW.close()
 
@@ -21,7 +21,7 @@ def readPix(pixels):
 	#read file line by line and update pixel object
 	#return the array
 
-	file = open("PixStorage.txt", "r")		
+	file = open("/home/denny0/LED_Project/effects/PixStorage.txt", "r")		
 	lines = file.readlines()
 
 	for n, l in enumerate(lines):
