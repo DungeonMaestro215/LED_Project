@@ -7,10 +7,9 @@ let LEDView = class {
         let led_strip = document.createElement("div");
         led_strip.setAttribute("class", "strip");
 
-        let colorpicker = document.getElementById('picker').value;
-
         let pixel_click_handler = (e) => {
             // TODO
+            let colorpicker = document.getElementById('picker').value;
 
             let pix = e.target;
             this.updateListeners({
