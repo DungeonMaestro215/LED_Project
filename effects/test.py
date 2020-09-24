@@ -1,2 +1,5 @@
-for i in range(1,10):
-    print(i)
+import time
+
+while True:
+    print("testing")
+    time.sleep(1)
