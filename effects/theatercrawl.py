@@ -19,6 +19,7 @@ pixels = neopixel.NeoPixel(
     pixel_pin, num_pixels, brightness=0.5, auto_write=False, pixel_order=ORDER
 )
  
+# credit to https://www.tweaking4all.com/hardware/arduino/adruino-led-strip-effects/#LEDStripEffectTheatreChase
 while True:
     for j in range(0, 10):
         for q in range(0, 3):

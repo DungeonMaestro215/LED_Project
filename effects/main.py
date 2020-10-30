@@ -6,6 +6,7 @@ from header import header
 from montecarlo import montecarlo
 from fire import fire
 from control import control
+from meteor import meteor
 
 effect = ""
 try:
@@ -22,3 +23,5 @@ elif (effect == "fire"):
     fire(num_pixels, pixels)
 elif (effect == "control"):
     control(num_pixels, pixels)
+elif (effect == "meteor"):
+    meteor(num_pixels, pixels)
