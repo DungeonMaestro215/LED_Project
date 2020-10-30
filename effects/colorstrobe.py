@@ -2,6 +2,7 @@
 import time
 import board
 import neopixel
+import numpy as np
  
  
 # Choose an open pin connected to the Data In of the NeoPixel strip, i.e. board.D18
@@ -16,21 +17,18 @@ num_pixels = 300
 ORDER = neopixel.GRB
  
 pixels = neopixel.NeoPixel(
-    pixel_pin, num_pixels, brightness=0.5, auto_write=False, pixel_order=ORDER
+    pixel_pin, num_pixels, brightness=.9, auto_write=False, pixel_order=ORDER
 )
 
-min = 25
-max = 75
-
+wait = .01
 while True:
-    # Fade in
-    for k in range (min, max):
-        pixels.fill((k, 0, 0))
-        pixels.show()
-        time.sleep(.1)
+    pixels.fill((0, 0, 0))
+    pixels.show()
+    time.sleep(.1)
+    r = int(np.random.rand() * 255)
+    g = int(np.random.rand() * 255)
+    b = int(np.random.rand() * 255)
+    pixels.fill((r, g, b))
+    pixels.show()
+    time.sleep(.01)
     
-    # Fade out
-    for k in range (max, min, -1):
-        pixels.fill((k, 0, 0))
-        pixels.show()
-        time.sleep(.1)

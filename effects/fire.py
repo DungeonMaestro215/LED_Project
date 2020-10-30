@@ -1,3 +1,4 @@
+# credit to https://www.tweaking4all.com/hardware/arduino/adruino-led-strip-effects/#LEDStripEffectFire
 def fire(num_pixels, pixels):
     import sys
     import time
@@ -5,8 +6,8 @@ def fire(num_pixels, pixels):
     
     eff_num_pixels = 40
     try:
-        effin = sys.argv[2]
-        if (effin <= 300 and effin > 0):
+        effin = int(sys.argv[2])
+        if (effin <= num_pixels and effin > 0):
             eff_num_pixels = effin
     except IndexError:
         print("")
@@ -31,8 +32,9 @@ def fire(num_pixels, pixels):
             heat[k] = int((heat[k - 1] + heat[k - 2] + heat[k - 2]) / 3)
     
         # Step 3. Randomly ignite new 'sparks' near bottom
+        spark_range = round(eff_num_pixels / 6)
         if (np.random.randint(0, 255) < Sparking):
-            y = np.random.randint(0, 7)
+            y = np.random.randint(0, spark_range)
             heat[y] = heat[y] + np.random.randint(160, 255)
     
         # Step 4. Convert heat to LED colors
