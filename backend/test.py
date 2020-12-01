@@ -9,7 +9,7 @@ pixels = [1]*5
 
 ### Master Loop ###
 while True:
-    for i in [1:len(sys.argv):num_params]:
+    for i in range(1, len(sys.argv, num_params):
         print(sys.argv[i])
         # if (effect == "addOne"):
             
