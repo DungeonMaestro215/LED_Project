@@ -10,5 +10,5 @@ num_params = 6
 
 ### Master Loop ###
 while True:
-    for effect in sys.argv[::num_params]:
+    for effect in sys.argv[1::num_params]:
         print(effect)
