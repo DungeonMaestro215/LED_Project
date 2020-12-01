@@ -1,4 +1,5 @@
 import sys
+import time
 
 # How many arguments will each effect have?
 # brightness, beginning, ending, plus 3 extra
@@ -12,3 +13,5 @@ num_params = 6
 while True:
     for effect in sys.argv[1::num_params]:
         print(effect)
+
+    time.sleep(0.5)
