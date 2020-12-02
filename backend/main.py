@@ -41,7 +41,7 @@ while True:
         params = sys.argv[i+4:i+num_params]      # Any additional parameters, up to 3, for the effect
 
         # Change the appropriate part of the array by running it through the function
-        pixels = pixels[0:begin] + function_dict[name](pixels[begin:end], bc, params) + pixels[end:len(pixels)]
+        pixels = pixels[0:begin] + effect_dict[name](pixels[begin:end], bc, params) + pixels[end:len(pixels)]
 
     print(pixels)
 

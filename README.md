@@ -6,6 +6,6 @@ By communicating with my Raspberry Pi Zero via a browser-based GUI or directly t
 
 
 TODO:
-* Make gui
-* Make backend (node.js)
+* Make new gui
+* Test running python scripts from Node backend
 * Test running effects with "auto-write=True" and no "pixels.show()"
