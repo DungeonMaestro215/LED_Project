@@ -24,27 +24,33 @@ pixels = neopixel.NeoPixel(
         pixel_pin, num_pixels, brightness=0.5, auto_write=False, pixel_order=ORDER
         )
 
-# How many arguments will each effect have?
-# effect name, brightness, beginning, ending, plus 3 extra is 7
-num_params = 7
-
 
 ### Master Loop ###
-while True:
-    # Every iteration, go through each effect that was given as an argument
-    for i in range(1, len(sys.argv), num_params):
-        # Gather necessary information about the effect
-        name = sys.argv[i]              # Effect name
-        bc = float(sys.argv[i + 1])     # Brightness controller for effect (float b/t 0 and 1)
-        begin = int(sys.argv[i + 2])    # Starting index for the effect
-        end = int(sys.argv[i + 3])      # Ending index for the effct (exclusive)
-        params = sys.argv[i+4:i+num_params]      # Any additional parameters, up to 3, for the effect
-
-        # Change the appropriate part of the array by running it through the function
-        pixels = pixels[0:begin] + function_dict[name](pixels[begin:end], bc, params) + pixels[end:len(pixels)]
-
-    print(pixels)
-
-    time.sleep(0.5)
-
-
+try:
+    while True:
+        # Parse through input
+        i = 1
+        while (i < len(sys.argv)):
+            # Gather necessary information about the effect
+            # name of effect, beginning and ending index for effect on the pixel array
+            name = sys.argv[i]
+            i += 1
+            begin, end = map(int, sys.argv[i:i+2])
+            i += 2
+    
+            # Determine the number of extra parameters given for the effect
+            j = i
+            while (j < len(sys.argv) and sys.argv[j] not in effect_dict):
+                j += 1
+    
+            # Change the appropriate part of the array by running it through the function
+            try:
+                pixels = pixels[0:begin] + effect_dict[name](pixels[begin:end], *sys.argv[i:j]) + pixels[end:len(pixels)]
+            except TypeError:
+                print("Error: Too many parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
+            i = j
+        print(pixels)
+    
+        time.sleep(0.5)
+except KeyboardInterrupt:
+    print("\n\nExiting program...")
