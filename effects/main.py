@@ -6,7 +6,8 @@ import neopixel
 import numpy as np
 
 ### Import effects and create effect dictionary ###
-effect_dict = {}
+from fill import fill
+effect_dict = { 'fill':fill }
 
 
 ### Set up NeoPixel pixel array ###
@@ -14,7 +15,7 @@ effect_dict = {}
 pixel_pin = board.D12
 
 # The number of pixels
-num_pixels = 300
+num_pixels = 10
 
 # The order of the pixel colors 
 ORDER = neopixel.GRB
