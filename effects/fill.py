@@ -1,5 +1,6 @@
 ### Fills pixels with a solid color ###
 def fill(pixels, bc, r, g, b):
+    r, g, b = map(int, [r, g, b])
     # Make sure r,g,b values are in range 0-255
     if (r < 0):
         r = 0

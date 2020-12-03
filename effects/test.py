@@ -46,8 +46,9 @@ try:
                 pixels = pixels[0:begin] + function_dict[name](pixels[begin:end], *sys.argv[i:j]) + pixels[end:len(pixels)]
             # except TypeError:
                 print("Error: Too many parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
-            i = j
             finally:
+                print("All good")
+            i = j
         print(pixels)
     
         time.sleep(0.5)
