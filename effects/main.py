@@ -1,27 +1,62 @@
+### Import necessary packages ### 
 import sys
-#import time
-#import numpy as np
-#
-from header import header
-from montecarlo import montecarlo
-from fire import fire
-from control import control
-from meteor import meteor
+import time
+import board
+import neopixel
+import numpy as np
 
-effect = ""
+### Import effects and create effect dictionary ###
+effect_dict = {}
+
+
+### Set up NeoPixel pixel array ###
+# Choose an open pin connected to the Data In of the NeoPixel strip
+pixel_pin = board.D12
+
+# The number of pixels
+num_pixels = 300
+
+# The order of the pixel colors 
+ORDER = neopixel.GRB
+
+# Set up the array for the strip
+pixels = neopixel.NeoPixel(
+        pixel_pin, num_pixels, brightness=0.5, auto_write=False, pixel_order=ORDER
+        )
+
+
+### Master Loop ###
+delay = 0.5
 try:
-    effect = sys.argv[1]
-except IndexError:
-    print("")
+    while True:
+        # Parse through input
+        i = 1
+        while (i < len(sys.argv)):
+            # Gather necessary information about the effect
+            # name of effect, beginning and ending index for effect on the pixel array
+            # name = sys.argv[i]
+            # i += 1
+            # begin, end = map(int, sys.argv[i:i+2])
+            # i += 2
+            name = sys.argv[i]
+            begin = int(sys.argv[i+1])
+            end = int(sys.argv[i+2])
+            i+=3
 
-# Initialize Pixels
-num_pixels, pixels = header(300)
-
-if (effect == "montecarlo"):
-    montecarlo(num_pixels, pixels)
-elif (effect == "fire"):
-    fire(num_pixels, pixels)
-elif (effect == "control"):
-    control(num_pixels, pixels)
-elif (effect == "meteor"):
-    meteor(num_pixels, pixels)
+            # Determine the number of extra parameters given for the effect
+            j = i
+            while (j < len(sys.argv) and sys.argv[j] not in effect_dict):
+                j += 1
+    
+            # Change the appropriate part of the array by running it through the function
+            try:
+                pixels = pixels[0:begin] + effect_dict[name](pixels[begin:end], *sys.argv[i:j]) + pixels[end:len(pixels)]
+            except TypeError:
+                print("Error: Incorrect number of parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
+            i = j
+        print(pixels)
+        # pixels.show()
+    
+        time.sleep(delay)
+except KeyboardInterrupt:
+    print("\n\nExiting program...")

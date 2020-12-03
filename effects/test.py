@@ -1,34 +1,28 @@
-### Import necessary packages ### 
 import sys
 import time
-import board
-import neopixel
-import numpy as np
 
-### Import effects and create effect dictionary ###
-effect_dict = {}
+# Import effects to test
+from fill import fill
 
+# Test functions
+def addOne(pixels, bc, p1, p2):
+    print('bc: ' + bc)
+    print('p1: ' + p1)
+    print('p2: ' + p2)
+    return [x+1 for x in pixels]
 
-### Set up NeoPixel pixel array ###
-# Choose an open pin connected to the Data In of the NeoPixel strip
-pixel_pin = board.D12
+def multTwo(pixels, bc, p1):
+    print('bc: ' + bc)
+    print('p1: ' + p1)
+    return [x*2 for x in pixels]
 
-# The number of pixels
-num_pixels = 300
+function_dict = { 'addOne':addOne, 'multTwo':multTwo, 'fill':fill }
 
-# The order of the pixel colors 
-ORDER = neopixel.GRB
-
-# Set up the array for the strip
-pixels = neopixel.NeoPixel(
-        pixel_pin, num_pixels, brightness=0.5, auto_write=False, pixel_order=ORDER
-        )
-
+pixels = [1]*5
 
 ### Master Loop ###
 try:
     while True:
-        # Parse through input
         i = 1
         while (i < len(sys.argv)):
             # Gather necessary information about the effect
@@ -40,12 +34,12 @@ try:
     
             # Determine the number of extra parameters given for the effect
             j = i
-            while (j < len(sys.argv) and sys.argv[j] not in effect_dict):
+            while (j < len(sys.argv) and sys.argv[j] not in function_dict):
                 j += 1
     
             # Change the appropriate part of the array by running it through the function
             try:
-                pixels = pixels[0:begin] + effect_dict[name](pixels[begin:end], *sys.argv[i:j]) + pixels[end:len(pixels)]
+                pixels = pixels[0:begin] + function_dict[name](pixels[begin:end], *sys.argv[i:j]) + pixels[end:len(pixels)]
             except TypeError:
                 print("Error: Too many parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
             i = j
