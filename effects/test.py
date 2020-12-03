@@ -27,10 +27,14 @@ try:
         while (i < len(sys.argv)):
             # Gather necessary information about the effect
             # name of effect, beginning and ending index for effect on the pixel array
+            # name = sys.argv[i]
+            # i += 1
+            # begin, end = map(int, sys.argv[i:i+2])
+            # i += 2
             name = sys.argv[i]
-            i += 1
-            begin, end = map(int, sys.argv[i:i+2])
-            i += 2
+            begin = int(sys.argv[i+1])
+            end = int(sys.argv[i+2])
+            i+=3
     
             # Determine the number of extra parameters given for the effect
             j = i
@@ -40,9 +44,10 @@ try:
             # Change the appropriate part of the array by running it through the function
             try:
                 pixels = pixels[0:begin] + function_dict[name](pixels[begin:end], *sys.argv[i:j]) + pixels[end:len(pixels)]
-            except TypeError:
+            # except TypeError:
                 print("Error: Too many parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
             i = j
+            finally:
         print(pixels)
     
         time.sleep(0.5)
