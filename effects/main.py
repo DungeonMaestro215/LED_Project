@@ -7,7 +7,8 @@ import numpy as np
 
 ### Import effects and create effect dictionary ###
 from fill import fill
-effect_dict = { 'fill':fill }
+from flash import flash
+effect_dict = { 'fill':fill, 'flash':flash }
 
 
 ### Set up NeoPixel pixel array ###
@@ -28,7 +29,7 @@ pixels = neopixel.NeoPixel(
 
 ### Master Loop ###
 # First argument will indicate whether or not this is a static effect
-static = bool(sys.argv[1])
+static = sys.argv[1] == '1' or sys.argv[1].lower() == 'true' or sys.argv[1].lower() == 'static'
 delay = 0.5
 frame_num = 0
 try:
@@ -54,7 +55,7 @@ try:
     
             # Change the appropriate part of the array by running it through the function
             # Each function will be given an 'info' array with necessary info to make the effect work
-            info = [pixels, frame_num]
+            info = [pixels[begin:end], frame_num]
             try:
                 pixels = pixels[0:begin] + effect_dict[name](info, *sys.argv[i:j]) + pixels[end:len(pixels)]
             except TypeError:
