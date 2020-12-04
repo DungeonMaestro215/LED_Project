@@ -2,6 +2,7 @@ from fill import fill
 
 ### Flash between the colors given as input ###
 def flash(info, bc, speed, *colors):
+    frame = info[1]
     # Check to see if lengths of colors is divisible by 3 
     # (every color needs r, g, and b)
     if len(colors) == 0 or len(colors) % 3:
@@ -12,6 +13,6 @@ def flash(info, bc, speed, *colors):
     colors = [int(c) for c in colors]
 
     # Which color is the current idx?
-    idx = int(info[1] / speed % (len(colors) / 3)) * 3
+    idx = int(frame / speed % (len(colors) / 3)) * 3
     return fill(info, bc, *colors[idx:idx+3])
     # return fill(info, bc, colors[idx], colors[idx+1], colors[idx+2])

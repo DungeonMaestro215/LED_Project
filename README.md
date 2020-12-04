@@ -9,4 +9,5 @@ TODO:
 * Make new gui
 * Test running python scripts from Node backend
 * Test running effects with "auto-write=True" and no "pixels.show()"
-* Static effects
+* Fire, Meteor, Collisions
+* Meteor speed (slower by skipping frames, or faster by increasing distance of the newly drawn meteor)
