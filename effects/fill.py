@@ -1,5 +1,6 @@
 ### Fills pixels with a solid color ###
-def fill(pixels, bc, r, g, b):
+def fill(info, bc, r, g, b):
+    pixels = info[0]
     # Make sure arguments are the appropriate types
     bc = float(bc)
     r, g, b = map(int, [r, g, b])

@@ -27,11 +27,14 @@ pixels = neopixel.NeoPixel(
 
 
 ### Master Loop ###
+# First argument will indicate whether or not this is a static effect
+static = bool(sys.argv[1])
 delay = 0.5
+frame_num = 0
 try:
     while True:
-        # Parse through input
-        i = 1
+        # Parse through input. Effect arguments start at index 2
+        i = 2
         while (i < len(sys.argv)):
             # Gather necessary information about the effect
             # name of effect, beginning and ending index for effect on the pixel array
@@ -50,14 +53,19 @@ try:
                 j += 1
     
             # Change the appropriate part of the array by running it through the function
+            # Each function will be given an 'info' array with necessary info to make the effect work
+            info = [pixels, frame_num]
             try:
-                pixels = pixels[0:begin] + effect_dict[name](pixels[begin:end], *sys.argv[i:j]) + pixels[end:len(pixels)]
+                pixels = pixels[0:begin] + effect_dict[name](info, *sys.argv[i:j]) + pixels[end:len(pixels)]
             except TypeError:
                 print("Error: Incorrect number of parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
             i = j
         print(pixels)
         # pixels.show()
+        if (static):
+            break
     
+        frame_num+=1
         time.sleep(delay)
 except KeyboardInterrupt:
     print("\n\nExiting program...")

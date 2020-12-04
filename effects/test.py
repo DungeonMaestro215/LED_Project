@@ -44,10 +44,8 @@ try:
             # Change the appropriate part of the array by running it through the function
             try:
                 pixels = pixels[0:begin] + function_dict[name](pixels[begin:end], *sys.argv[i:j]) + pixels[end:len(pixels)]
-            # except TypeError:
+            except TypeError:
                 print("Error: Too many parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
-            finally:
-                print("All good")
             i = j
         print(pixels)
     

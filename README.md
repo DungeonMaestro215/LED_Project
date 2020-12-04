@@ -9,3 +9,4 @@ TODO:
 * Make new gui
 * Test running python scripts from Node backend
 * Test running effects with "auto-write=True" and no "pixels.show()"
+* Static effects
