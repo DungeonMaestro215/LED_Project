@@ -1,7 +1,7 @@
 const View = class {
     constructor() {
         // All available effects
-        this.effects = [new Fill(), new Meteor()];
+        this.effects = [new Empty(), new Fill(), new Meteor()];
         console.log(this.effects);
 
         this.populateButtons();
