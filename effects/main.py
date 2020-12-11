@@ -1,8 +1,8 @@
 ### Import necessary packages ### 
 import sys
 import time
-import board
-import neopixel
+# import board
+# import neopixel
 import numpy as np
 
 ### Import effects and create effect dictionary ###
@@ -14,18 +14,19 @@ effect_dict = { 'fill':fill, 'flash':flash, 'meteor':meteor }
 
 ### Set up NeoPixel pixel array ###
 # Choose an open pin connected to the Data In of the NeoPixel strip
-pixel_pin = board.D12
+# pixel_pin = board.D12
 
 # The number of pixels
 num_pixels = 10
 
 # The order of the pixel colors 
-ORDER = neopixel.GRB
+# ORDER = neopixel.GRB
 
 # Set up the array for the strip
-pixels = neopixel.NeoPixel(
-        pixel_pin, num_pixels, brightness=0.5, auto_write=False, pixel_order=ORDER
-        )
+# pixels = neopixel.NeoPixel(
+#         pixel_pin, num_pixels, brightness=0.5, auto_write=False, pixel_order=ORDER
+#         )
+pixels = [[0, 0, 0]] * num_pixels
 
 
 ### Master Loop ###
@@ -63,8 +64,9 @@ try:
                 print("Error: Incorrect number of parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
             i = j
         print(pixels)
+        # sys.stdout.flush()
         # pixels.show()
-        if (static):
+        if (static or frame_num > 10):
             break
     
         frame_num+=1

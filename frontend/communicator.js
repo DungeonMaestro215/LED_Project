@@ -1,13 +1,13 @@
-window.onload = () => {
-    document.getElementById('hello').addEventListener('click', clickHandler);
-}
+// window.onload = () => {
+//     document.getElementById('hello').addEventListener('click', clickHandler);
+// }
 
-const clickHandler = async function(e) {
+const communicator = async function(effect) {
     const result = await axios({
         method: 'get',
         url: 'http://localhost:3000/',
         params: {
-            id: 14
+            effect: effect
         }
     });
     console.log(result);

@@ -6,10 +6,14 @@ By communicating with my Raspberry Pi Zero via a browser-based GUI or directly t
 
 
 TODO:
+*** When transferring to Pi ***
+* Uncomment mentions of 'board' and 'neopixel' in python scripts
+* Change 'exec' commands
+* Test running effects with "auto-write=True" and no "pixels.show()"
+
 * Optimize for mobile (!)
 * Make new gui
 * Test running python scripts from Node backend
-* Test running effects with "auto-write=True" and no "pixels.show()"
 * Fire and Collisions
 * Meteor speed (slower by skipping frames, or faster by increasing distance of the newly drawn meteor)
 * Saving configurations

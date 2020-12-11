@@ -58,7 +58,7 @@ const Effect = class {
                                 <div class="input-group-prepend">\
                                     <span class="input-group-text">Brightness</span>\
                                 </div>
-                                <input class="form-control" type="number" value="${this.bc}" min="0" max="1" step="0.1">\
+                                <input class="setting form-control" data-setting="bc" type="number" value="${this.bc}" min="0" max="1" step="0.1">\
                             </div>`;
         // const bc_wrapper = document.createElement('div');
         // bc_wrapper.setAttribute('class', 'input-group mb-3');
@@ -94,7 +94,8 @@ const Fill = class extends Effect {
 
     setDefault() {
         super.setDefault();
-        this.color = { r: 255, g: 255, b: 255 }
+        // this.color = { r: 255, g: 255, b: 255 }
+        this.color = '#ffffff';
     }
 
     getOptions() {
@@ -106,7 +107,7 @@ const Fill = class extends Effect {
         color_wrapper.innerHTML =   `<div class="input-group-prepend">\
                                         <span class="input-group-text">Color</span>\
                                     </div>
-                                    <input class="form-control" type="color" value="${this.color}">`;
+                                    <input class="setting form-control" data-setting="color" type="color" value="${this.color}">`;
         // const color_wrapper = document.createElement('div');
         // color_wrapper.setAttribute('class', 'input-group mb-3');
         // const color_group_prepend = document.createElement('div');
@@ -126,6 +127,7 @@ const Fill = class extends Effect {
         return options_wrapper;
     }
     // setColor(color) { this.color = color; }
+    // getColor() { return `#${this.color.r.toString(16)}${this.color.g.toString(16)}${this.color.b.toString(16)}`; }
 }
 
 const Empty = class extends Effect {
@@ -135,7 +137,8 @@ const Empty = class extends Effect {
 
     setDefault() {
         super.setDefault();
-        this.color = { r: 0, g: 0, b: 0 }
+        // this.color = { r: 0, g: 0, b: 0 }
+        this.color = '#000000';
     }
 }
 
@@ -146,7 +149,8 @@ const Meteor = class extends Effect {
 
     setDefault() {
         super.setDefault();
-        this.color = { r: 255, g: 255, b: 255 };
+        // this.color = { r: 255, g: 255, b: 255 };
+        this.color = '#ffffff'
         this.size = 1;
         this.trail_decay = 80;
         this.random_decay = true;
@@ -162,7 +166,7 @@ const Meteor = class extends Effect {
         color_wrapper.innerHTML =   `<div class="input-group-prepend">\
                                         <span class="input-group-text">Color</span>\
                                     </div>
-                                    <input class="form-control" type="color" value="${this.color}">`;
+                                    <input class="setting form-control" data-setting="color" type="color" value="${this.color}">`;
 
         options_wrapper.insertBefore(color_wrapper, options_wrapper.childNodes[1]);
 
@@ -172,7 +176,7 @@ const Meteor = class extends Effect {
         size_wrapper.innerHTML =   `<div class="input-group-prepend">\
                                         <span class="input-group-text">Size</span>\
                                     </div>
-                                    <input class="form-control" type="number" value="${this.size}" min="1">`;
+                                    <input class="setting form-control" data-setting="size" type="number" value="${this.size}" min="1">`;
 
         options_wrapper.insertBefore(size_wrapper, options_wrapper.childNodes[2]);
 
@@ -182,7 +186,7 @@ const Meteor = class extends Effect {
         trail_decay_wrapper.innerHTML = `<div class="input-group-prepend">\
                                             <span class="input-group-text">Trail Decay</span>\
                                         </div>
-                                        <input class="form-control" type="number" value="${this.trail_decay}">`;
+                                        <input class="setting form-control" data-setting="trail_decay" type="number" value="${this.trail_decay}">`;
 
         options_wrapper.insertBefore(trail_decay_wrapper, options_wrapper.childNodes[3]);
 
@@ -192,7 +196,7 @@ const Meteor = class extends Effect {
         random_wrapper.innerHTML =   `<div class="input-group-prepend">\
                                         <span class="input-group-text">Random Decay</span>\
                                     </div>
-                                    <input class="form-control" type="checkbox" checked>`;
+                                    <input class="setting form-control" data-setting="random_decay" type="checkbox" checked>`;
 
         options_wrapper.insertBefore(random_wrapper, options_wrapper.childNodes[4]);
 
@@ -202,10 +206,11 @@ const Meteor = class extends Effect {
         speed_wrapper.innerHTML =   `<div class="input-group-prepend">\
                                         <span class="input-group-text">Speed</span>\
                                     </div>
-                                    <input class="form-control" type="number" value="${this.speed}">`;
+                                    <input class="setting form-control" data-setting="speed" type="number" value="${this.speed}">`;
 
         options_wrapper.insertBefore(speed_wrapper, options_wrapper.childNodes[5]);
         return options_wrapper;
     }
     // setColor(color) { this.color = color; }
+    // getColor() { return `#${this.color.r.toString(16)}${this.color.g.toString(16)}${this.color.b.toString(16)}`; }
 }
