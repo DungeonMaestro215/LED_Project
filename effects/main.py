@@ -8,7 +8,8 @@ import numpy as np
 ### Import effects and create effect dictionary ###
 from fill import fill
 from flash import flash
-effect_dict = { 'fill':fill, 'flash':flash }
+from meteor import meteor
+effect_dict = { 'fill':fill, 'flash':flash, 'meteor':meteor }
 
 
 ### Set up NeoPixel pixel array ###
