@@ -82,6 +82,9 @@ const Effect = class {
 
         return options_wrapper;
     }
+    getArgumentList() {
+        return [this.name.toLowerCase(), this.begin, this.end, this.bc];
+    }
     // setBegin(begin) { this.begin = begin; }
     // setEnd(end) { this.end = end; }
     // setBC(bc) { this.bc = bc; }
@@ -125,6 +128,9 @@ const Fill = class extends Effect {
 
         options_wrapper.insertBefore(color_wrapper, options_wrapper.childNodes[1]);
         return options_wrapper;
+    }
+    getArgumentList() {
+        return super.getArgumentList().concat(rgbToHex(this.color));
     }
     // setColor(color) { this.color = color; }
     // getColor() { return `#${this.color.r.toString(16)}${this.color.g.toString(16)}${this.color.b.toString(16)}`; }
@@ -211,6 +217,19 @@ const Meteor = class extends Effect {
         options_wrapper.insertBefore(speed_wrapper, options_wrapper.childNodes[5]);
         return options_wrapper;
     }
+    getArgumentList() {
+        return super.getArgumentList().concat(rgbToHex(this.color), this.size, this.trail_decay, this.random_decay, this.speed);
+    }
     // setColor(color) { this.color = color; }
     // getColor() { return `#${this.color.r.toString(16)}${this.color.g.toString(16)}${this.color.b.toString(16)}`; }
+}
+
+/* Convert color in format #rrggbb to [r,g,b].
+ * Elements of resulting array will also be converted to base 10.
+ */
+const rgbToHex = function(color) {
+    const r = parseInt(color[1] + color[2], 16);
+    const g = parseInt(color[3] + color[4], 16);
+    const b = parseInt(color[5] + color[6], 16);
+    return [r, g, b];
 }

@@ -8,15 +8,20 @@ By communicating with my Raspberry Pi Zero via a browser-based GUI or directly t
 TODO:
 *** When transferring to Pi ***
 * Uncomment mentions of 'board' and 'neopixel' in python scripts
-* Change 'exec' commands
+* Change 'spawn' commands
 * Test running effects with "auto-write=True" and no "pixels.show()"
+* Don't send 'effect' in communicator
+* Remove frame limit
 
+* Meteor checkbox doesn't reflect effect's settings
 * Optimize for mobile (!)
-* Make new gui
-* Test running python scripts from Node backend
-* Fire and Collisions
+* Strobe and Flash effects
+* Fire and Collisions effects
+* Rainbow effect
 * Meteor speed (slower by skipping frames, or faster by increasing distance of the newly drawn meteor)
 * Saving configurations
+* Do something if brightness control is >1
+* Multiple effects!
 
 Default calls for effects (which work!)
 fill:
@@ -26,4 +31,4 @@ flash:
 main.py 0 flash 3 7 1 3 0 0 0 1 1 1 2 2 2
 
 meteor:
-main.py 0 meteor 0 10 2 20 20 20 1 80 True 1
+main.py 0 meteor 0 10 1 20 20 20 1 80 True 1

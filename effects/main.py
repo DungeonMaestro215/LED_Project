@@ -64,7 +64,7 @@ try:
                 print("Error: Incorrect number of parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
             i = j
         print(pixels)
-        # sys.stdout.flush()
+        sys.stdout.flush()
         # pixels.show()
         if (static or frame_num > 10):
             break
