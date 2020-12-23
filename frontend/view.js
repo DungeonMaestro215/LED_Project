@@ -4,7 +4,7 @@ const View = class {
 
     constructor() {
         // All available effects
-        this.effects = [new Empty(), new Fill(), new Meteor()];
+        this.effects = [new Empty(), new Fill(), new Strobe(), new Flash(), new Meteor()];
         // console.log(this.effects);
 
         this.populateButtons();
@@ -38,6 +38,7 @@ const View = class {
             setting.addEventListener('input', (e) => {
                 const setting_name = e.target.getAttribute('data-setting');
                 this.effect[setting_name] = e.target.value;
+                console.log(setting_name);
             });
         }
     }

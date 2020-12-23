@@ -13,6 +13,8 @@ TODO:
 * Don't send 'effect' in communicator
 * Remove frame limit
 
+*** Coding ***
+* Move where the settings are bound *** 
 * Meteor checkbox doesn't reflect effect's settings
 * Optimize for mobile (!)
 * Strobe and Flash effects
@@ -22,6 +24,17 @@ TODO:
 * Saving configurations
 * Do something if brightness control is >1
 * Multiple effects!
+* Inverted Fire effect
+
+*** Audio Visualzing ***
+* Copy over visualization stuff from Pi 4
+* Get visualizer to work with Raspotify
+* Get Raspotify and visualizer to work with bluetooth 🤢
+* Need long MicroUSB to 3.5mm audio cable (?)
+* Setup Neopixel for the visualizer 
+* Possible issues: 
+    * Will it work headless...? (github says maybe not)
+    * Is the refresh rate going to be okay?
 
 Default calls for effects (which work!)
 fill:

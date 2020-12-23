@@ -82,6 +82,7 @@ const Effect = class {
 
         return options_wrapper;
     }
+
     getArgumentList() {
         return [this.name.toLowerCase(), this.begin, this.end, this.bc];
     }
@@ -217,11 +218,117 @@ const Meteor = class extends Effect {
         options_wrapper.insertBefore(speed_wrapper, options_wrapper.childNodes[5]);
         return options_wrapper;
     }
+
     getArgumentList() {
         return super.getArgumentList().concat(rgbToHex(this.color), this.size, this.trail_decay, this.random_decay, this.speed);
     }
     // setColor(color) { this.color = color; }
     // getColor() { return `#${this.color.r.toString(16)}${this.color.g.toString(16)}${this.color.b.toString(16)}`; }
+}
+
+const Strobe = class extends Effect {
+    constructor() {
+        super('Strobe');
+    }
+
+    setDefault() {
+        super.setDefault();
+        this.speed = 1;
+        // this.color = { r: 255, g: 255, b: 255 }
+        this.color = '#ffffff';
+    }
+
+    getOptions() {
+        const options_wrapper = super.getOptions();
+
+        // Color Selector
+        const color_wrapper = document.createElement('div');
+        color_wrapper.setAttribute('class', 'input-group mb-3');
+        color_wrapper.innerHTML =   `<div class="input-group-prepend">\
+                                        <span class="input-group-text">Color</span>\
+                                    </div>
+                                    <input class="setting form-control" data-setting="color" type="color" value="${this.color}">`;
+
+        options_wrapper.insertBefore(color_wrapper, options_wrapper.childNodes[1]);
+
+        // Speed Selector
+        const speed_wrapper = document.createElement('div');
+        speed_wrapper.setAttribute('class', 'input-group mb-3');
+        speed_wrapper.innerHTML =   `<div class="input-group-prepend">\
+                                        <span class="input-group-text">Speed</span>\
+                                    </div>
+                                    <input class="setting form-control" data-setting="speed" type="number" value="${this.speed}">`;
+
+        options_wrapper.insertBefore(speed_wrapper, options_wrapper.childNodes[2]);
+        return options_wrapper;
+    }
+
+    getArgumentList() {
+        return super.getArgumentList().concat([this.speed, rgbToHex(this.color)]);
+    }
+}
+
+const Flash = class extends Effect {
+    constructor() {
+        super('Flash');
+    }
+
+    setDefault() {
+        super.setDefault();
+        this.speed = 1;
+        // this.color = { r: 255, g: 255, b: 255 }
+        this.num_colors = 1;
+        this.color0 = '#ffffff';
+    }
+
+    getOptions() {
+        const options_wrapper = super.getOptions();
+
+        // Color Selector
+        const color_wrapper = this.createColorSelector();
+        options_wrapper.insertBefore(color_wrapper, options_wrapper.childNodes[1]);
+
+        // Add new colors
+        const new_color = document.createElement('button');
+        new_color.setAttribute('class', 'btn btn-secondary');
+        new_color.innerText = '+';
+        options_wrapper.insertBefore(new_color, options_wrapper.childNodes[2]);
+        new_color.addEventListener('click', (e) => {
+            this.num_colors++;
+            options_wrapper.insertBefore(this.createColorSelector(), e.target);
+        });
+
+        // Remove Colors
+
+        // Speed Selector
+        const speed_wrapper = document.createElement('div');
+        speed_wrapper.setAttribute('class', 'input-group mb-3');
+        speed_wrapper.innerHTML =   `<div class="input-group-prepend">\
+                                        <span class="input-group-text">Speed</span>\
+                                    </div>
+                                    <input class="setting form-control" data-setting="speed" type="number" value="${this.speed}">`;
+
+        options_wrapper.insertBefore(speed_wrapper, options_wrapper.childNodes[3]);
+        return options_wrapper;
+    }
+
+    createColorSelector() {
+        const color_wrapper = document.createElement('div');
+        color_wrapper.setAttribute('class', 'input-group mb-3');
+        color_wrapper.innerHTML =   `<div class="input-group-prepend">\
+                                        <span class="input-group-text">Color</span>\
+                                    </div>
+                                    <input class="setting form-control" data-setting="color${this.num_colors - 1}" type="color" value="${this.color0}">`;
+        return color_wrapper;
+    }
+
+    getArgumentList() {
+        let colors = [];
+        for (let i = 0; i < this.num_colors; i++) {
+            colors = colors.concat(rgbToHex(this[`color${i}`]));
+        }
+        return super.getArgumentList().concat(this.speed).concat(colors);
+    }
 }
 
 /* Convert color in format #rrggbb to [r,g,b].
