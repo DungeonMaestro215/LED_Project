@@ -12,6 +12,7 @@ TODO:
 * Test running effects with "auto-write=True" and no "pixels.show()"
 * Don't send 'effect' in communicator
 * Remove frame limit
+* Rainbow needs testing
 
 *** Coding ***
 * Move where the settings are bound *** 

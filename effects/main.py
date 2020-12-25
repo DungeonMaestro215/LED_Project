@@ -10,7 +10,8 @@ from fill import fill
 from flash import flash
 from meteor import meteor
 from rng import rng
-effect_dict = { 'fill':fill, 'flash':flash, 'meteor':meteor, 'rng':rng}
+from rainbow import rainbow
+effect_dict = { 'fill':fill, 'flash':flash, 'meteor':meteor, 'rng':rng, 'rainbow':rainbow }
 
 
 ### Set up NeoPixel pixel array ###
