@@ -15,9 +15,9 @@ TODO:
 
 *** Coding ***
 * Move where the settings are bound *** 
+* Optimize effects...
 * Meteor checkbox doesn't reflect effect's settings
 * Optimize for mobile (!)
-* Strobe and Flash effects
 * Fire and Collisions effects
 * Rainbow effect
 * Meteor speed (slower by skipping frames, or faster by increasing distance of the newly drawn meteor)
@@ -26,12 +26,18 @@ TODO:
 * Multiple effects!
 * Inverted Fire effect
 
+*** Alexa Integration ??? ***
+* Figure out how to make Alexa make HTTP requests
+* Create voice commands that correspond to that request
+
 *** Audio Visualzing ***
 * Copy over visualization stuff from Pi 4
 * Get visualizer to work with Raspotify
 * Get Raspotify and visualizer to work with bluetooth 🤢
 * Need long MicroUSB to 3.5mm audio cable (?)
-* Setup Neopixel for the visualizer 
+* Setup Neopixel for the visualizer / Use their build in Pi controls
+* Create new effect with 3 equilizer bars
+* Get microphone?
 * Possible issues: 
     * Will it work headless...? (github says maybe not)
     * Is the refresh rate going to be okay?

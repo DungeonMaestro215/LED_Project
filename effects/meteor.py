@@ -32,7 +32,6 @@ def meteor(info, bc, r, g, b, meteor_size, meteor_trail_decay, meteor_rand_decay
 
     return pixels
 
-
 def fadeToBlack(pix, fade_value, rand_decay):
     if rand_decay:
         return [0 if x <= 10 else int(x - x*fade_value/256) for x in pix]
