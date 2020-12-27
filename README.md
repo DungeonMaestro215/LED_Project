@@ -21,6 +21,8 @@ TODO:
 * Optimize for mobile (!)
 * Fire and Collisions effects
 * Rainbow effect
+* Count down / timer
+* Randome explosions (fireworks)
 * Meteor speed (slower by skipping frames, or faster by increasing distance of the newly drawn meteor)
 * Saving configurations
 * Do something if brightness control is >1
