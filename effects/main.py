@@ -59,9 +59,9 @@ try:
     
             # Change the appropriate part of the array by running it through the function
             # Each function will be given an 'info' array with necessary info to make the effect work
-            info = [pixels[begin:end], frame_num]
+            #info = [pixels[begin:end], frame_num]
             try:
-                pixels = pixels[0:begin] + effect_dict[name](info, *sys.argv[i:j]) + pixels[end:len(pixels)]
+                pixels = pixels[0:begin] + effect_dict[name](pixels[begin:end], frame_num, *sys.argv[i:j]) + pixels[end:len(pixels)]
             except TypeError:
                 print("Error: Incorrect number of parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
             i = j

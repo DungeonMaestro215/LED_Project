@@ -3,9 +3,9 @@ from numpy import random
 from fill import fill
 
 ### Generate a meteor that flys across the LEDs ###
-def meteor(info, bc, r, g, b, meteor_size, meteor_trail_decay, meteor_rand_decay, speed):
-    pixels, frame = info
+def meteor(pixels, frame, bc, r, g, b, meteor_size, meteor_trail_decay, meteor_rand_decay, speed):
     # Make sure arguments are the appropriate types
+    frame = int(frame)
     bc = float(bc)
     r, g, b, meteor_size, meteor_trail_decay, speed = map(int, [r, g, b, meteor_size, meteor_trail_decay, speed])
     meteor_rand_decay = meteor_rand_decay == "1" or meteor_rand_decay.lower() == "true"
@@ -24,11 +24,11 @@ def meteor(info, bc, r, g, b, meteor_size, meteor_trail_decay, meteor_rand_decay
         b = 255
     
     # Fade brightness of all pixels
-    pixels = [fadeToBlack(pix, meteor_trail_decay, not meteor_rand_decay or random.random() > .5) for pix in pixels]
+    pixels = [fadeToBlack(pix, meteor_trail_decay, not meteor_rand_decay or random.random_sample() > .5) for pix in pixels]
 
     # Draw meteor
     idx = frame % len(pixels)
-    pixels[idx:idx + meteor_size] = fill([pixels[idx:idx+meteor_size], frame], bc, r, g, b)
+    pixels[idx:idx + meteor_size] = fill(pixels[idx:idx+meteor_size], frame, bc, r, g, b)
 
     return pixels
 

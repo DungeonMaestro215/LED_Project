@@ -1,5 +1,5 @@
 ### Fills pixels with a solid color ###
-def fill(info, bc, r, g, b):
+def fill(pixels, frame, bc, r, g, b):
     # Make sure arguments are the appropriate types
     bc = float(bc)
     r, g, b = map(int, [r, g, b])
@@ -21,4 +21,4 @@ def fill(info, bc, r, g, b):
     fill_color = [int(x*bc) for x in [r, g, b]]
 
     # Replace each pixel with this color
-    return [fill_color]*len(info[0])
+    return [fill_color]*len(pixels)

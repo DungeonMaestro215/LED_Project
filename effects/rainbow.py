@@ -21,16 +21,16 @@ def wheel(pos):
         b = int(255 - pos * 3)
     return (r, g, b)
 
-def rainbow(info, bc, speed):
+def rainbow(pixels, frame, bc, speed):
     # Validate input types
     bc = float(bc)
     speed = int(speed)
-    frame = int(info[1]) % 255
-    num_pixels = len(info[0])
+    frame = int(frame) % 255
+    num_pixels = len(pixels)
 
     # Calculate position for each LED
     for i in range(num_pixels):
         pixel_index = (i * 256 // num_pixels) + frame
-        info[0][i] = wheel(pixel_index & 255)
+        pixels[i] = wheel(pixel_index & 255)
 
-    return info[0]
+    return pixels

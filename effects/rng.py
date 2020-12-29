@@ -4,10 +4,10 @@ import numpy as np
 # change_prob - probability that any given light will change on the next frame
 # off_prob - probability that any given light will turn off
 # This is nice to be able to control, rather than just having one of the possible colors be 'off'
-def rng(info, bc, change_prob, off_prob):
+def rng(pixels, frame, bc, change_prob, off_prob):
     # Validate types for inputs
     # bc, change_prob, off_prob = [float(x for x in [bc, change_prob, off_prob])]
-    num_pixels = len(info[0])
+    num_pixels = len(pixels)
     bc = float(bc)
     change_prob = float(change_prob)
     off_prob = float(off_prob)
@@ -18,7 +18,7 @@ def rng(info, bc, change_prob, off_prob):
         if (np.random.rand(1)[0] <= off_prob):
             pixels[i] = [0, 0, 0]
         # Change this pixel's color?
-        elif (np.random.rand(1)[0] <= change_prob):
+        elif (np.random.random_sample() <= change_prob):
             # Choose random color and scale by brightness
             colors = np.random.rand(3)
             pixels[i] = [int(bc * 255 * c) for c in colors]
