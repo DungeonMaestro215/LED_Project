@@ -18,6 +18,7 @@ TODO:
 *** Coding ***
 * Move where the settings are bound *** 
 * Optimize effects...
+    * Make special 'info' effects?
 * Meteor checkbox doesn't reflect effect's settings
 * Optimize for mobile (!)
 * Fire and Collisions effects
