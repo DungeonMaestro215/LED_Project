@@ -14,7 +14,7 @@ from rainbow import rainbow
 effect_dict = { 'fill':fill, 'flash':flash, 'meteor':meteor, 'rng':rng, 'rainbow':rainbow }
 
 
-### Set up NeoPixel pixel array ###
+### Set up NeoPixel pixel array ### 
 # Choose an open pin connected to the Data In of the NeoPixel strip
 # pixel_pin = board.D12
 

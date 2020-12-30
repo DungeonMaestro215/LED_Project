@@ -1,6 +1,6 @@
 import numpy as np
 
-### Randomly assign a color to every LED ###
+### Randomly assign a color to every LED ### 
 # change_prob - probability that any given light will change on the next frame
 # off_prob - probability that any given light will turn off
 # This is nice to be able to control, rather than just having one of the possible colors be 'off'

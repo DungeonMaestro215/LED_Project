@@ -1,6 +1,6 @@
 from fill import fill
 
-### Flash between the colors given as input ###
+### Flash between the colors given as input ### 
 def flash(info, bc, speed, *colors):
     frame = info[1]
     # Check to see if lengths of colors is divisible by 3 

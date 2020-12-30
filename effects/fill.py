@@ -1,4 +1,4 @@
-### Fills pixels with a solid color ###
+### Fills pixels with a solid color ### 
 def fill(info, bc, r, g, b):
     # Make sure arguments are the appropriate types
     bc = float(bc)

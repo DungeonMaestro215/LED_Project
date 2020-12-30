@@ -2,7 +2,7 @@
 from numpy import random
 from fill import fill
 
-### Generate a meteor that flys across the LEDs ###
+### Generate a meteor that flys across the LEDs ### 
 def meteor(info, bc, r, g, b, meteor_size, meteor_trail_decay, meteor_rand_decay, speed):
     pixels, frame = info
     # Make sure arguments are the appropriate types
