@@ -46,10 +46,8 @@ def Sparkle(length, pixel, rightc, leftc):
     pixels.show()
 
 def PrettyColors(rand, lowerbound, upperbound):
-    r = 0
-    g = 0
-    b = 0
-    # rand = np.random.rand()
+    r, g, b = [0, 0, 0]
+
     if (rand < 1):
         r = np.random.randint(lowerbound, 256)
         g = np.random.randint(lowerbound, 256)
