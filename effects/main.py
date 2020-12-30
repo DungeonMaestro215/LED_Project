@@ -1,8 +1,8 @@
 ### Import necessary packages ### 
 import sys
 import time
-# import board
-# import neopixel
+import board
+import neopixel
 import numpy as np
 
 ### Import effects and create effect dictionary ###
@@ -17,25 +17,25 @@ special_effect_dict = {'collision': collision}
 
 ### Set up NeoPixel pixel array ###
 # Choose an open pin connected to the Data In of the NeoPixel strip
-# pixel_pin = board.D12
+pixel_pin = board.D12
 
 # The number of pixels
-num_pixels = 10
+num_pixels = 300
 
 # The order of the pixel colors 
-# ORDER = neopixel.GRB
+ORDER = neopixel.GRB
 
 # Set up the array for the strip
-# pixels = neopixel.NeoPixel(
-#         pixel_pin, num_pixels, brightness=0.5, auto_write=False, pixel_order=ORDER
-#         )
-pixels = [[0, 0, 0]] * num_pixels
+pixels = neopixel.NeoPixel(
+        pixel_pin, num_pixels, brightness=0.5, auto_write=False, pixel_order=ORDER
+        )
+# pixels = [[0, 0, 0]] * num_pixels
 
 
 ### Master Loop ###
 # First argument will indicate whether or not this is a static effect
 static = sys.argv[1] == '1' or sys.argv[1].lower() == 'true' or sys.argv[1].lower() == 'static'
-delay = 0.5
+delay = 0.01
 frame_num = 0
 
 # Special effects may need to send data to a future frame
@@ -66,7 +66,8 @@ try:
                 # Normal effect
                 if (name in effect_dict):
                     effect_results = effect_dict[name](pixels[begin:end], frame_num, *sys.argv[i:j])    # Call effect
-                    pixels = pixels[0:begin] + effect_results + pixels[end:len(pixels)]      # Insert effect into pixel array
+                    # pixels = pixels[0:begin] + effect_results + pixels[end:len(pixels)]      # Insert effect into pixel array
+                    pixels[0:num_pixels] = pixels[0:begin] + effect_results + pixels[end:len(pixels)]      # Insert effect into pixel array
                 # Special effect
                 else:
                     # Initialize an info key for this effect
@@ -82,10 +83,11 @@ try:
                 print("Error: Incorrect number of parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
 
             i = j
-        print(pixels)
+        #print(pixels)
         sys.stdout.flush()
-        # pixels.show()
-        if (static or frame_num > 10):
+        pixels.show()
+        # if (static or frame_num > 10):
+        if (static):
             break
     
         frame_num+=1
