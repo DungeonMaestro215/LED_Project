@@ -10,19 +10,25 @@ app.use(cors());
 // GET 
 app.get('/', (req, res) => {
     // Kill any other python processes
-    spawn("tskill", ["python"]);
+    // spawn("tskill", ["python"]);
+    const kill = spawn("pkill", ["-9", "-f", "main.py"]);
 
     // What information did we receive?
     console.log(`Effect: ${req.query.effect}`);
     console.log(`Args: ${req.query.args}`);
     
     // Start the effect animation
-    const child = spawn("py", ["../effects/main.py", 0].concat(req.query.args));
+    console.log("python3", ["../effects/main.py", 0].concat(req.query.args));
+    //const child = spawn("py", ["../effects/main.py", 0].concat(req.query.args));
+    kill.on('close', () => {
+
+    	const child = spawn("python3", ["../effects/main.py", 0].concat(req.query.args));
     child.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
     });
     child.stderr.on('data', (data) => {
-        console.error(`stderr: ${data}`);
+        // console.error(`stderr: ${data}`);
+        console.log(`stderr: ${data}`);
     });
     child.on('close', (code) => {
         console.log(`Child process exited with code ${code}.`);
