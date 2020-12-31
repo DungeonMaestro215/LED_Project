@@ -13,8 +13,9 @@ from rng import rng
 from rainbow import rainbow
 from collision import collision
 from fire import fire
+from timer import timer
 effect_dict = { 'fill':fill, 'flash':flash, 'meteor':meteor, 'rng':rng, 'rainbow':rainbow }
-special_effect_dict = {'collision': collision, 'fire': fire}
+special_effect_dict = {'collision': collision, 'fire': fire, 'timer': timer}
 
 ### Set up NeoPixel pixel array ###
 # Choose an open pin connected to the Data In of the NeoPixel strip
@@ -59,7 +60,7 @@ try:
 
             # Determine the number of extra parameters given for the effect
             j = i
-            while (j < len(sys.argv) and (sys.argv[j] not in effect_dict or sys.argv[j] not in special_effect_dict):
+            while (j < len(sys.argv) and (sys.argv[j] not in effect_dict or sys.argv[j] not in special_effect_dict)):
                 j += 1
     
             # Change the appropriate part of the array by running it through the function
@@ -80,7 +81,7 @@ try:
                     effect_info["" + name + str(begin)] = effect_results[1:len(effect_results)]      # Update any given info 
                     print(effect_results[1])
 
-            except TypeError as e:
+            except ZeroDivisionError as e:
                 print("Error: Incorrect number of parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
                 print(e)
 

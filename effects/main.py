@@ -14,7 +14,7 @@ from rainbow import rainbow
 from collision import collision
 from fire import fire
 effect_dict = { 'fill':fill, 'flash':flash, 'meteor':meteor, 'rng':rng, 'rainbow':rainbow }
-special_effect_dict = {'collision': collision, 'fire': fire}
+special_effect_dict = {'collision': collision, 'fire': fire, 'timer', timer}
 
 ### Set up NeoPixel pixel array ###
 # Choose an open pin connected to the Data In of the NeoPixel strip
