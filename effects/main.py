@@ -82,6 +82,7 @@ try:
 
             except TypeError as e:
                 print("Error: Incorrect number of parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
+                print(e)
 
             i = j
         #print(pixels)
