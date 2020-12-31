@@ -39,7 +39,7 @@ def fire(heat, pixels, frame, bc, cooling, sparking, invert, speed):
 
     # Step 4. Convert heat to LED colors
     for j in range(0, num_pixels):
-        if (invert):
+        if (invert == 'True'):
             id = num_pixels - 1 - j
         else:
             id = j
