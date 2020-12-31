@@ -59,7 +59,7 @@ try:
 
             # Determine the number of extra parameters given for the effect
             j = i
-            while (j < len(sys.argv) and sys.argv[j] not in effect_dict):
+            while (j < len(sys.argv) and (sys.argv[j] not in effect_dict or sys.argv[j] not in special_effect_dict):
                 j += 1
     
             # Change the appropriate part of the array by running it through the function
