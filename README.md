@@ -32,6 +32,7 @@ TODO:
 
 *** Alexa Integration ??? ***
 * Figure out how to make Alexa make HTTP requests
+* How to handle colors? or various effects
 * Create voice commands that correspond to that request
 
 *** Audio Visualzing ***
