@@ -21,14 +21,13 @@ TODO:
     * Make special 'info' effects?
 * Meteor checkbox doesn't reflect effect's settings
 * Optimize for mobile (!)
-* Fire and Collisions effects
+* Collisions effects
 * Count down / timer
 * Random explosions (fireworks)
 * Meteor speed (slower by skipping frames, or faster by increasing distance of the newly drawn meteor)
 * Saving configurations
 * Do something if brightness control is >1
 * Multiple effects!
-* Inverted Fire effect
 
 *** Alexa Integration ??? ***
 * Figure out how to make Alexa make HTTP requests
