@@ -59,7 +59,7 @@ try:
 
             # Determine the number of extra parameters given for the effect
             j = i
-            while (j < len(sys.argv) and (sys.argv[j] not in effect_dict or sys.argv[j] not in special_effect_dict):
+            while (j < len(sys.argv) and sys.argv[j] not in effect_dict and sys.argv[j] not in special_effect_dict):
                 j += 1
     
             # Change the appropriate part of the array by running it through the function
@@ -76,9 +76,9 @@ try:
                         effect_info["" + name + str(begin)] = None
                     
                     effect_results = special_effect_dict[name](effect_info["" + name + str(begin)], pixels[begin:end], frame_num, *sys.argv[i:j])    # Call effect
-                    pixels = pixels[0:begin] + effect_results[0] + pixels[end:len(pixels)]      # Insert effect into pixel array
+                    pixels[0:num_pixels] = pixels[0:begin] + effect_results[0] + pixels[end:len(pixels)]      # Insert effect into pixel array
                     effect_info["" + name + str(begin)] = effect_results[1:len(effect_results)]      # Update any given info 
-                    print(effect_results[1])
+                    # print(effect_results[1])
 
             except TypeError as e:
                 print("Error: Incorrect number of parameters given for effect '" + name + ".' Check that the correct number of parameters are given and that there are no typos.")
