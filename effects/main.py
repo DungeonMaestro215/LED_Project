@@ -35,7 +35,7 @@ pixels = neopixel.NeoPixel(
 # pixels = [[0, 0, 0]] * num_pixels
 
 ### Effects that don't need special treatment ###
-def sparkle(pixels, id, length, speed, delay):
+def sparkle(pixels, idx, length, speed, delay):
     for i in range(2, length, speed):
         pixels.fill((0, 0, 0))
         dimmer = ((length - i)/length)**2
@@ -43,10 +43,10 @@ def sparkle(pixels, id, length, speed, delay):
             r = np.random.randint(0, 256) * dimmer
             g = np.random.randint(0, 256) * dimmer
             b = np.random.randint(0, 256) * dimmer
-            if (id - j >= 0 and np.random.randint(0, int(length)) > length**(i/length)):
-                pixels[id - j] = (r, g, b)
-            if (id + 1 + j < num_pixels and np.random.randint(0, int(length)) > i):
-                pixels[id + 1 + j] = (r, g, b)
+            if (idx - j >= 0 and np.random.randint(0, int(length)) > length**(i/length)):
+                pixels[idx - j] = (r, g, b)
+            if (idx + 1 + j < num_pixels and np.random.randint(0, int(length)) > i):
+                pixels[idx + 1 + j] = (r, g, b)
 
         pixels.show()
         time.sleep(.01)
@@ -72,7 +72,8 @@ def timer2(pixels, time_length, delay):
     length = 10
     speed = 1
     while True:
-        sparkle(pixels, id, length, speed, delay)
+        idx = np.random.randint(0, len(pixels))
+        sparkle(pixels, idx, length, speed, delay)
 
 not_special_effects_dict = { 'timer2': timer2 }
 
