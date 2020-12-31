@@ -13,11 +13,12 @@ def timer(end_time, pixels, frame, bc, time_length):
 
     current_time = int(round(time.time()))
     if (current_time < end_time):
+        # FIX THIS CUZ THIS AIN'T IT
         for i in range(0, int(len(pixels) * (end_time - current_time) / time_length)):
             pixels[i] = [150, 150, 150]
         for i in range(len(pixels) - 1, int(len(pixels) * (end_time - current_time) / time_length), -1):
             pixels[i] = [0, 0, 0]
     else:
-        pixels[0:len(pixels)] = [255, 0, 0] * len(pixels)
+        pixels[0:len(pixels)] = [[255, 0, 0]] * len(pixels)
 
     return [pixels, end_time]
