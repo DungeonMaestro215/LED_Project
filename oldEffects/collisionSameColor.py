@@ -17,7 +17,7 @@ pixels = neopixel.NeoPixel(
         pixel_pin, num_pixels, brightness=0.5, auto_write=False, pixel_order=ORDER
         )
 
-size = 300
+size = 1000
 speed = 8
 explength = int((20 + size * .4) * (1 + speed * .15))
 pause = 3

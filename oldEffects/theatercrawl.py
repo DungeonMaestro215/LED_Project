@@ -26,7 +26,7 @@ while True:
             for i in range(0, num_pixels, 3):
                 pixels[i + q] = (150, 150, 150)
             pixels.show()
-            time.sleep(.01)
+            time.sleep(.05)
 
             for i in range(0, num_pixels, 3):
                 pixels[i + q] = (0, 0, 0)
