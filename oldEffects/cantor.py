@@ -30,8 +30,6 @@ level = top_level
 on_color = (0,255,0)
 off_color = (0,0,0)
 
-pixels.fill(on_color)
-
 while True:
     # Length of level intervals
     interval = 3**level
@@ -43,6 +41,7 @@ while True:
 
     # Display
     pixels.show()
+    print(level)
     
     # Go down a level, or go back to the top
     if (level == 0):
