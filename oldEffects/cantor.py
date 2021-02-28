@@ -45,7 +45,6 @@ while True:
 
     # Display
     pixels.show()
-    print(level)
     
     # Go down a level, or go back to the top
     if (level == 0):
