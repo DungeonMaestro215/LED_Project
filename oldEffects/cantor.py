@@ -37,7 +37,7 @@ while True:
     interval = 3**level
 
     # Does this index belong in this level?
-    for idx in range(0, end - start:
+    for idx in range(0, end - start):
         if (idx / interval % 3 >= 1 and idx / interval % 3 < 2):
             pixels[idx + start] = off_color
 
